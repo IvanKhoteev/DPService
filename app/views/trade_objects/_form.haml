@@ -1,0 +1,6 @@
+= simple_form_for @trade_object do |f|
+  = f.input :name, label: 'Trade Subject Name'
+  = f.input :current_price, label: 'Current Price'
+  = f.input :minimum_price, label: 'Minimum Price'
+  = f.submit 'Create/Modify Trade Object', class: 'btn btn-primary btn-block'
+  

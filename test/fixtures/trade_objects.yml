@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: trade_objects
+#
+#  id                   :integer          not null, primary key
+#  name                 :string
+#  current_price        :decimal(15, 2)
+#  minimum_price        :decimal(15, 2)
+#  sales_count          :float            default(0.0)
+#  total_count_of_sales :float            default(0.0)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  current_price: 9.99
+  minimum_price: 9.99
+  maximum_price: 9.99
+  sales_count: 1.5
+  total_count_of_sales: 1.5
+
+two:
+  name: MyString
+  current_price: 9.99
+  minimum_price: 9.99
+  maximum_price: 9.99
+  sales_count: 1.5
+  total_count_of_sales: 1.5
