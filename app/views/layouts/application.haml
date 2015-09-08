@@ -1,12 +1,76 @@
 !!!
 %html
   %head
-    %title DP
+    %title DPService
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - flash.each do |key, value|
-      %div{:class => "alert alert-#{key}", :style => "position: relative;"}
-        = value
-    = yield
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#navbar", "data-toggle" => "collapse", :type => "button", "aria-controls" => "navbar", "aria-expanded" => "false"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'DPService', root_path, class: 'navbar-brand'
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li
+              = link_to 'Home', root_path
+            %li
+              = link_to 'About Service', '#'
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Dynamic Pricing
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to 'Show Trade Objects Table', trade_objects_path
+                %li
+                  = link_to 'Create Trade Object', new_trade_object_path
+                %li
+                  %a{:href => "#"} Another action
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider{:role => "separator"}
+                %li.dropdown-header Nav header
+                %li
+                  %a{:href => "#"} Separated link
+                %li
+                  %a{:href => "#"} One more separated link
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Catalog
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to 'Goods', '#'
+                %li
+                  = link_to 'Services', '#'
+                %li
+                  = link_to 'Companies', '#'
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider{:role => "separator"}
+                %li.dropdown-header Nav header
+                %li
+                  %a{:href => "#"} Separated link
+                %li
+                  %a{:href => "#"} One more separated link
+            %li
+              = link_to 'Contacts', '#'
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to 'Sign in', '#'
+            %li
+              = link_to 'Log in' , '#'
+    .container
+      - flash.each do |key, value|
+        %div{:class => "alert alert-#{key}", :style => "position: relative;"}
+          = value
+      = yield
+    %footer.footer
+      .container
+        %p.text-muted Copyright &copy; 2015 DPService
