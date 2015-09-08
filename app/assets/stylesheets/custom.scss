@@ -1,0 +1,26 @@
+$footer-height: 30px;
+$margin-bottom-to-footer: $footer-height + 22px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body > .container {
+  padding-top: 70px;
+  margin-bottom: $margin-bottom-to-footer;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: #f5f5f5;
+}
+
+.right {
+  display: block;
+  position: relative;
+  float: right;
+}
