@@ -1,6 +1,9 @@
 = simple_form_for @trade_object do |f|
-  = f.input :name, label: 'Trade Subject Name'
+  = f.input :name, label: 'Trade Object Name'
+  = f.label 'Trade Object Type:'
+  = f.input :object_type, label: '', item_wrapper_class: 'inline',collection: ['Goods', 'Service'], as: :radio_buttons
   = f.input :current_price, label: 'Current Price'
   = f.input :minimum_price, label: 'Minimum Price'
-  = f.submit 'Create/Modify Trade Object', class: 'btn btn-primary btn-block'
+  .right
+    = f.button :submit, class: 'btn btn-primary'
   

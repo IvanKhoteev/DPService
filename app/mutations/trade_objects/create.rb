@@ -4,6 +4,7 @@ module TradeObjects
       string :name
       float  :current_price, min: 0
       float  :minimum_price, min: 0
+      string :object_type
     end
 
     def validate

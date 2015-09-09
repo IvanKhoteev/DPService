@@ -1,39 +1,35 @@
-%table.table.table-striped.table-bordered
-  %tr
-    %th ID
-    %td
-      = @trade_object.id
-  %tr
-    %th Trade Object name
-    %td
-      = @trade_object.name
-  %tr
-    %th Current price
-    %td
-      = @trade_object.current_price
-  %tr
-    %th Minimum price
-    %td
-      = @trade_object.minimum_price
-  %tr
-    %th Last contributed to sales in the current period
-    %td
-      = @trade_object.sales_count
-  %tr
-    %th Current sales for the reporting period
-    %td
-      = @trade_object.total_count_of_sales
-%div.btn-group
-  %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-    Actions
-    %span.caret
-  %ul.dropdown-menu
-    %li= link_to 'Modify', edit_trade_object_path(@trade_object)
-    %li= link_to 'Destroy', trade_object_path(@trade_object), method: :delete
-    %li.divider{:role => "separator"}
-    %li= link_to 'Show Trade History', '#'
-    %li.divider{:role => "separator"}
-    %li= link_to 'Add Sales Data', '#'
-    %li.divider{:role => "separator"}
-    %li= link_to 'Add Strategy', '#'
-= link_to 'Back', request.referer, class: 'btn btn-defailt'
+.row
+  .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+    %h3.center
+      Information Page about #{@trade_object.object_type}: #{@trade_object.name}
+    %table.table.table-striped.table-bordered
+      %tr
+        %th Current price
+        %td.to_right
+          = number_to_currency(@trade_object.current_price, unit: '')
+      %tr
+        %th Minimum price
+        %td.to_right
+          = number_to_currency(@trade_object.minimum_price, unit: '')
+      %tr
+        %th Last contributed to sales in the current period
+        %td.to_right
+          = @trade_object.sales_count
+      %tr
+        %th Current sales for the reporting period
+        %td.to_right
+          = @trade_object.total_count_of_sales
+    .right
+      %div.btn-group
+        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          Actions
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right
+          %li= link_to 'Update', edit_trade_object_path(@trade_object)
+          %li= link_to 'Destroy', trade_object_path(@trade_object), method: :delete
+          %li.divider{:role => "separator"}
+          %li= link_to 'Show Trade History', '#'
+          %li.divider{:role => "separator"}
+          %li= link_to 'Add Sales Data', '#'
+          %li.divider{:role => "separator"}
+          %li= link_to 'Add Strategy', '#'

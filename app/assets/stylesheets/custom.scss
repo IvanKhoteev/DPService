@@ -20,7 +20,26 @@ body > .container {
 }
 
 .right {
+  clear: both;
   display: block;
   position: relative;
   float: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.to_right {
+  text-align: right;
+}
+
+.inline {
+  display: inline;
+  margin-right: 15px;
+}
+
+.logo_color {
+  color: #5cb85c !important;
+  font-weight: bold;
 }

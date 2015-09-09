@@ -6,6 +6,10 @@ module TradeObjects
       float   :minimum_price, min: 0
       integer :id
     end
+    
+    optional do
+      string  :object_type
+    end
 
     def validate
       add_error(:price_less_min,

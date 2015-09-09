@@ -1,9 +1,10 @@
-%h3
+%h3.center
   Trade Objects Table
 %table.table.table-hover.table-bordered
   %thead
     %tr
       %th Trade Object Name
+      %th Trade Object Type
       %th Current price
       %th Minimum price
       %th Last contributed to sales in the current period
@@ -13,10 +14,15 @@
     - @trade_objects.each do |trade_object|
       %tr
         %td= trade_object.name
-        %td= trade_object.current_price
-        %td= trade_object.minimum_price
-        %td= trade_object.sales_count
-        %td= trade_object.total_count_of_sales
+        %td= trade_object.object_type
+        %td.to_right
+          = number_to_currency(trade_object.current_price, unit: "")
+        %td.to_right
+          = number_to_currency(trade_object.minimum_price, unit: "")
+        %td.to_right
+          = trade_object.sales_count
+        %td.to_right
+          = trade_object.total_count_of_sales
         %td
           %div.btn-group
             %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -24,8 +30,8 @@
               %span.caret
             %ul.dropdown-menu.dropdown-menu-right
               %li= link_to 'Show', trade_object_path(trade_object)
-              %li= link_to 'Modify', edit_trade_object_path(trade_object)
-              %li= link_to 'Destroy', trade_object_path(trade_object), method: :delete
+              %li= link_to 'Update', edit_trade_object_path(trade_object)
+              %li= link_to 'Destroy', trade_object_path(trade_object), method: :delete, data: { confirm: 'Are you sure?' }
               %li.divider{:role => "separator"}
               %li= link_to 'Show Trade History', '#'
               %li.divider{:role => "separator"}

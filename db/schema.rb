@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20150903074437) do
 
   create_table "trade_objects", force: :cascade do |t|
     t.string   "name"
+    t.string   "object_type"
     t.decimal  "current_price",        precision: 15, scale: 2
     t.decimal  "minimum_price",        precision: 15, scale: 2
     t.float    "sales_count",                                   default: 0.0

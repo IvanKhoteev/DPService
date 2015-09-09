@@ -4,4 +4,4 @@
 
 
 $(document).ready ->
-  $('.alert').fadeOut(3000)
+  $('.alert-success').fadeOut(5000)
