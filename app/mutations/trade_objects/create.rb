@@ -14,7 +14,7 @@ module TradeObjects
     end
 
     def execute
-      TradeObject.create!(inputs.merge(actual_current_price: current_price, average_actual_current_price: current_price))
+      TradeObject.create!(inputs.merge(actual_current_price: current_price, average_actual_current_price: 0))
     end
   end
 end

@@ -18,7 +18,10 @@ module TradeObjects
     end
 
     def execute
-      TradeObject.update(id, inputs)
+      trade_object = TradeObject.find(id)
+      average_actual_current_price = trade_object.sales_histories.blank? ? 0 : trade_object.average_actual_current_price
+      trade_object.update(inputs.merge(average_actual_current_price: average_actual_current_price))
+      trade_object
     end
   end
 end
