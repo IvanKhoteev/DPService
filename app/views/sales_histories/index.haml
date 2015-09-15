@@ -1,0 +1,16 @@
+- @trade_object = TradeObject.find(params[:trade_object_id])
+.row
+  .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.col-xs-12
+    %h3.center
+      #{@trade_object.name} Sales History
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th Saling Price
+          %th Number of Sales
+          %th Date of Information
+          %th
+      %tbody
+        = render @trade_object.sales_histories
+    .right
+      = link_to 'Add Sales Data', new_trade_object_sales_history_path(@trade_object), class: 'btn btn-primary btn-center'

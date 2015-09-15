@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: sales_histories
+#
+#  id                              :integer          not null, primary key
+#  sale_price                      :decimal(15, 2)
+#  sales_count                     :float            default(0.0)
+#  trade_object_id                 :integer
+#  created_at                      :datetime         not null
+#  updated_at                      :datetime         not null
+#  date_of_implementation_strategy :datetime
+#  actual_current_price            :decimal(15, 2)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

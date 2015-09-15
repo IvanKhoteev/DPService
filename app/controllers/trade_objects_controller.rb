@@ -13,7 +13,7 @@ class TradeObjectsController < ApplicationController
     if outcome.success?
       @trade_object = outcome.result
       flash[:success] = "The Trade Object '#{@trade_object.name}' was successfuly created"
-      redirect_to root_path
+      redirect_to trade_objects_path
     else
       flash[:warning] = "When you create any following errors: #{outcome.errors.message_list}"
       redirect_to request.referer
@@ -33,7 +33,7 @@ class TradeObjectsController < ApplicationController
     if outcome.success?
       @trade_object = outcome.result
       flash[:success] = "The Trade Subject '#{@trade_object.name}' was successfuly updated"
-      redirect_to root_path
+      redirect_to trade_objects_path
     else
       flash[:warning] = "When you create any following errors: #{outcome.errors.message_list}"
       redirect_to request.referer

@@ -1,0 +1,12 @@
+%tr
+  %td.to_right= number_to_currency(sales_history.sale_price, unit: '')
+  %td.to_right= sales_history.sales_count
+  %td.to_right= sales_history.created_at
+  %td.to_right
+    %div.btn-group
+      %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Actions
+        %span.caret
+      %ul.dropdown-menu.dropdown-menu-right
+        %li= link_to 'Update', edit_trade_object_sales_history_path(@trade_object, sales_history)
+        %li= link_to 'Destroy', trade_object_sales_history_path(@trade_object, sales_history), method: :delete, data: { confirm: 'Are you sure?' }

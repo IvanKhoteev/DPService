@@ -26,14 +26,17 @@
                 Dynamic Pricing
                 %span.caret
               %ul.dropdown-menu
+                %li.dropdown-header Trade Object Actions
                 %li
                   = link_to 'Show Trade Objects Table', trade_objects_path
                 %li
                   = link_to 'Create New Trade Object', new_trade_object_path
+                %li.divider{:role => "separator"}
+                %li.dropdown-header Sales History Actions
                 %li
-                  %a{:href => "#"} Another action
+                  %a{:href => "#"} SH1
                 %li
-                  %a{:href => "#"} Something else here
+                  %a{:href => "#"} SH2
                 %li.divider{:role => "separator"}
                 %li.dropdown-header Nav header
                 %li

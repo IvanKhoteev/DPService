@@ -1,0 +1,2 @@
+module SalesHistoriesHelper
+end

@@ -1,0 +1,5 @@
+= simple_form_for([@trade_object, @sales_history]) do |f|
+  = f.input :actual_current_price, label: 'Enter the current actual selling price, if it is different from the recommended system price', input_html: { value: "#{f.object.new_record? ? @trade_object.current_price : @sales_history.actual_current_price}" }
+  = f.input :sales_count, label: 'Enter the last (unpaid) sales', input_html: { value: "#{f.object.new_record? ? '' : @sales_history.sales_count}" }
+  .right
+    = f.submit 'Add Sales Data', class: 'btn btn-primary'

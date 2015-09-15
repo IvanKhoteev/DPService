@@ -1,0 +1,6 @@
+- @trade_object = TradeObject.find(params[:trade_object_id])
+.row
+  .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.col-xs-6.col-xs-offset-3
+    %h3.center
+      Update Data of sales #{@trade_object.object_type} #{@trade_object.name}
+    = render 'form'

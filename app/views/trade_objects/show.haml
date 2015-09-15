@@ -12,10 +12,6 @@
         %td.to_right
           = number_to_currency(@trade_object.minimum_price, unit: '')
       %tr
-        %th Last contributed to sales in the current period
-        %td.to_right
-          = @trade_object.sales_count
-      %tr
         %th Current sales for the reporting period
         %td.to_right
           = @trade_object.total_count_of_sales
@@ -28,8 +24,7 @@
           %li= link_to 'Update', edit_trade_object_path(@trade_object)
           %li= link_to 'Destroy', trade_object_path(@trade_object), method: :delete
           %li.divider{:role => "separator"}
-          %li= link_to 'Show Trade History', '#'
-          %li.divider{:role => "separator"}
-          %li= link_to 'Add Sales Data', '#'
+          %li= link_to 'Add Sales Data', new_trade_object_sales_history_path(@trade_object)
+          %li= link_to 'Show Trade History', trade_object_sales_histories_path(@trade_object)
           %li.divider{:role => "separator"}
           %li= link_to 'Add Strategy', '#'
