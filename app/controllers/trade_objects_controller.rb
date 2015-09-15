@@ -49,7 +49,7 @@ class TradeObjectsController < ApplicationController
   private
 
   def trade_object_params
-    params.require(:trade_object).permit(:name, :object_type, :current_price, :minimum_price)
+    params.require(:trade_object).permit(:name, :kind_of_object, :current_price, :minimum_price)
   end
 
 end

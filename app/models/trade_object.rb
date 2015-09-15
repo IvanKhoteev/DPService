@@ -4,7 +4,7 @@
 #
 #  id                           :integer          not null, primary key
 #  name                         :string
-#  object_type                  :string
+#  kind_of_object               :string
 #  current_price                :decimal(15, 2)
 #  minimum_price                :decimal(15, 2)
 #  sales_count                  :float            default(0.0)

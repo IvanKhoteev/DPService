@@ -14,7 +14,7 @@
     - @trade_objects.each do |trade_object|
       %tr
         %td= trade_object.name
-        %td= trade_object.object_type
+        %td= trade_object.kind_of_object
         %td.to_right
           = number_to_currency(trade_object.current_price, unit: "")
         %td.to_right

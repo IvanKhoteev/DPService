@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915060718) do
+ActiveRecord::Schema.define(version: 20150915105748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20150915060718) do
 
   create_table "trade_objects", force: :cascade do |t|
     t.string   "name"
-    t.string   "object_type"
+    t.string   "kind_of_object"
     t.decimal  "current_price",                precision: 15, scale: 2
     t.decimal  "minimum_price",                precision: 15, scale: 2
     t.float    "sales_count",                                           default: 0.0
