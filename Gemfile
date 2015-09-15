@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
 gem 'rails'
 gem 'pg'
 gem 'sass-rails'
@@ -18,6 +17,8 @@ gem 'sidekiq'
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'celluloid'
+
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'

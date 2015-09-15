@@ -15,18 +15,18 @@ module SalesHistories
 
     def execute
       old_sales_history = SalesHistory.find(id)
-      old_sales_count = old_sales_history.sales_count
-      old_sale_price  = old_sales_history.sale_price
-      old_average_actual_current_price = trade_object.average_actual_current_price
-      delta_total_volume_of_sales = old_average_actual_current_price * trade_object.total_count_of_sales - old_sales_count * old_sale_price
-      trade_object.sales_histories.update(id, inputs.merge(sale_price: actual_current_price))
       if old_sales_history.date_of_implementation_strategy.blank?
+        old_sales_count = old_sales_history.sales_count
+        old_sale_price  = old_sales_history.sale_price
+        old_average_actual_current_price = trade_object.average_actual_current_price
+        delta_total_volume_of_sales = old_average_actual_current_price * trade_object.total_count_of_sales - old_sales_count * old_sale_price
         trade_object.total_count_of_sales += sales_count - old_sales_count
         trade_object.average_actual_current_price = ( delta_total_volume_of_sales + actual_current_price * sales_count ) / trade_object.total_count_of_sales
         trade_object.save
       else
         # Here was added actions when strategy was implementating
       end
+      trade_object.sales_histories.update(id, inputs.merge(sale_price: actual_current_price))
     end
   end
 end

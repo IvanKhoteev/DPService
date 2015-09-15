@@ -43,13 +43,15 @@ class SalesHistoriesController < ApplicationController
 
   def destroy
     sales_history = SalesHistory.find(params[:id])
-    sales_count = sales_history.sales_count
-    sale_price = sales_history.sale_price
+    if sales_history.date_of_implementation_strategy.blank?
+      sales_count = sales_history.sales_count
+      sale_price = sales_history.sale_price
+      new_total_count_of_sales  = trade_object.total_count_of_sales - sales_count
+      new_average_actual_current_price = ( trade_object.average_actual_current_price * trade_object.total_count_of_sales - sales_count * sale_price ) / new_total_count_of_sales
+      trade_object.update(total_count_of_sales: new_total_count_of_sales,
+                          average_actual_current_price: new_average_actual_current_price)
+    end
     sales_history.destroy
-    new_total_count_of_sales  = trade_object.total_count_of_sales - sales_count
-    new_average_actual_current_price = ( trade_object.average_actual_current_price * trade_object.total_count_of_sales - sales_count * sale_price ) / new_total_count_of_sales
-    trade_object.update(total_count_of_sales: new_total_count_of_sales,
-                        average_actual_current_price: new_average_actual_current_price)
     redirect_to trade_object_sales_histories_path(trade_object)
   end
 
