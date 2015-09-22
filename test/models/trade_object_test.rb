@@ -13,6 +13,7 @@
 #  updated_at                   :datetime         not null
 #  actual_current_price         :decimal(15, 2)
 #  average_actual_current_price :decimal(15, 2)
+#  among_of_sales               :decimal(15, 2)
 #
 
 require 'test_helper'

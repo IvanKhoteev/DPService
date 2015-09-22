@@ -12,9 +12,13 @@
         %td.to_right
           = number_to_currency(@trade_object.minimum_price, unit: '')
       %tr
-        %th Current sales for the reporting period
+        %th The Number Of Sales For The Last Reporting Period
         %td.to_right
           = @trade_object.total_count_of_sales
+      %tr
+        %th The Amount Of Sales For The Last Reporting Period
+        %td.to_right
+          = number_to_currency(@trade_object.amount_of_sales, unit: "")
     .right
       %div.btn-group
         %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

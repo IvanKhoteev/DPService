@@ -17,6 +17,7 @@ module SalesHistories
       trade_object.sales_count = sales_count
       trade_object.total_count_of_sales += sales_count
       trade_object.average_actual_current_price = (trade_object.average_actual_current_price * (trade_object.total_count_of_sales - sales_count) + actual_current_price * sales_count) / trade_object.total_count_of_sales
+      trade_object.amount_of_sales += actual_current_price * sales_count
       trade_object.save
     end
   end

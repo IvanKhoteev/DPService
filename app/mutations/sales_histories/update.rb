@@ -18,6 +18,8 @@ module SalesHistories
       if old_sales_history.date_of_implementation_strategy.blank?
         old_sales_count = old_sales_history.sales_count
         old_sale_price  = old_sales_history.sale_price
+        old_amount_of_sales = old_sales_count * old_sale_price
+        trade_object.amount_of_sales += sales_count * actual_current_price - old_amount_of_sales
         old_average_actual_current_price = trade_object.average_actual_current_price
         delta_total_volume_of_sales = old_average_actual_current_price * trade_object.total_count_of_sales - old_sales_count * old_sale_price
         trade_object.total_count_of_sales += sales_count - old_sales_count
