@@ -9,7 +9,9 @@ module TradeObjects
 
     def validate
       if current_price < minimum_price
-        add_error(:price_less_min, :current_price_less_then_minimum_price, "The current price can not be less than the minimum established price")
+        add_error(:price_less_min,
+                  :current_price_less_then_minimum_price,
+                  "The current price can not be less than the minimum established price")
       end
     end
 

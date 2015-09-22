@@ -19,6 +19,7 @@ class SalesHistoriesController < ApplicationController
     if outcome.success?
       @sales_history = outcome.result
       flash[:success] = "The Sales Data was successfuly added"
+      flash[:danger] = "This Sale Price Less The Minimum Price" if @sales_history.sale_price < trade_object.minimum_price
       redirect_to trade_objects_path
     else
       flash[:warning] = "When added Sales Data took place the following errors: #{outcome.errors.message_list}"
@@ -34,6 +35,7 @@ class SalesHistoriesController < ApplicationController
     if outcome.success?
       @sales_history = outcome.result
       flash[:success] = "The Sales Data was successfuly updated"
+      flash[:danger] = "This Sale Price Less The Minimum Price" if @sales_history.sale_price < trade_object.minimum_price
       redirect_to trade_object_sales_histories_path(trade_object)
     else
       flash[:warning] = "When updated Sales Data took place the following errors: #{outcome.errors.message_list}"
@@ -42,18 +44,16 @@ class SalesHistoriesController < ApplicationController
   end
 
   def destroy
-    sales_history = SalesHistory.find(params[:id])
-    if sales_history.date_of_implementation_strategy.blank?
-      sales_count = sales_history.sales_count
-      sale_price = sales_history.sale_price
-      new_total_count_of_sales  = trade_object.total_count_of_sales - sales_count
-      new_average_actual_current_price = new_total_count_of_sales == 0 ? 0 : ( trade_object.average_actual_current_price * trade_object.total_count_of_sales - sales_count * sale_price ) / new_total_count_of_sales
-      trade_object.update(total_count_of_sales: new_total_count_of_sales,
-                          average_actual_current_price: new_average_actual_current_price,
-                          amount_of_sales: trade_object.amount_of_sales - sales_count * sale_price)
+
+    outcome = SalesHistories::Destroy.run(trade_object:trade_object,
+                                          id: params[:id])
+    if outcome.success?
+      flash[:success] = "The Sales Data was successfuly deleted"
+      redirect_to trade_object_sales_histories_path(trade_object)
+    else
+      flash[:warning] = "When deleted Sales Data took place the following errors: #{outcome.errors.message_list}"
+      redirect_to request.referer
     end
-    sales_history.destroy
-    redirect_to trade_object_sales_histories_path(trade_object)
   end
 
   private

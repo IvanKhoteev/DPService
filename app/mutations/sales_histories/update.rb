@@ -3,7 +3,7 @@ module SalesHistories
     required do
       model   :trade_object
       float   :sales_count
-      float   :actual_current_price
+      float   :actual_current_price, min: 0
       integer :id
     end
 
