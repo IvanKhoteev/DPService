@@ -18,8 +18,11 @@ class SalesHistoriesController < ApplicationController
                                          actual_current_price: params[:sales_history][:actual_current_price])
     if outcome.success?
       @sales_history = outcome.result
-      flash[:success] = "The Sales Data was successfuly added"
-      flash[:danger] = "This Sale Price Less The Minimum Price" if @sales_history.sale_price < trade_object.minimum_price
+      if @sales_history.sale_price < trade_object.minimum_price
+        flash[:danger] = "The Sales Data was successfuly added, BUT This Sale Price Less The Minimum Price"
+      else
+        flash[:success] = "The Sales Data was successfuly added"
+      end
       redirect_to trade_objects_path
     else
       flash[:warning] = "When added Sales Data took place the following errors: #{outcome.errors.message_list}"
@@ -34,8 +37,11 @@ class SalesHistoriesController < ApplicationController
                                          id: params[:id])
     if outcome.success?
       @sales_history = outcome.result
-      flash[:success] = "The Sales Data was successfuly updated"
-      flash[:danger] = "This Sale Price Less The Minimum Price" if @sales_history.sale_price < trade_object.minimum_price
+      if @sales_history.sale_price < trade_object.minimum_price
+        flash[:danger] = "The Sales Data was successfuly updeted, BUT This Sale Price Less The Minimum Price"
+      else
+        flash[:success] = "The Sales Data was successfuly updeted"
+      end
       redirect_to trade_object_sales_histories_path(trade_object)
     else
       flash[:warning] = "When updated Sales Data took place the following errors: #{outcome.errors.message_list}"
