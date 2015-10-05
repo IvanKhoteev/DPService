@@ -8,7 +8,7 @@ module TradeObjects
     end
     
     optional do
-      string  :object_type
+      string  :kind_of_object
     end
 
     def validate

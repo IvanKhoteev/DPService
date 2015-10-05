@@ -1,0 +1,30 @@
+%tr
+  %td.center
+    = trade_object.name
+  %td.center
+    = trade_object.kind_of_object
+  %td.to_right
+    = number_to_currency(trade_object.current_price, unit: "")
+  %td.to_right
+    = number_to_currency(trade_object.average_actual_current_price, unit: "")
+  %td.to_right
+    = number_to_currency(trade_object.minimum_price, unit: "")
+  %td.to_right
+    = trade_object.total_count_of_sales
+  %td.to_right
+    = number_to_currency(trade_object.amount_of_sales, unit: "") 
+  %td.to_right
+    %div.btn-group
+      %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Actions
+        %span.caret
+      %ul.dropdown-menu.dropdown-menu-right
+        %li= link_to 'Show', trade_object_path(trade_object)
+        %li= link_to 'Update', edit_trade_object_path(trade_object)
+        %li= link_to 'Delete', trade_object_path(trade_object), method: :delete, data: { confirm: 'Are you sure?' }
+        %li.divider{role: "separator"}
+        %li= link_to 'Add Sales Data', new_trade_object_sales_history_path(trade_object)
+        %li= link_to 'Show Trade History', trade_object_sales_histories_path(trade_object)
+        %li.divider{:role => "separator"}
+        %li= link_to 'Add Strategy', '#'
+        

@@ -3,7 +3,7 @@ module SalesHistories
     required do
       model   :trade_object
       float   :sales_count
-      float   :actual_current_price, min: 0
+      float   :sale_price, min: 0
       integer :id
     end
 
@@ -19,16 +19,16 @@ module SalesHistories
         old_sales_count = old_sales_history.sales_count
         old_sale_price  = old_sales_history.sale_price
         old_amount_of_sales = old_sales_count * old_sale_price
-        trade_object.amount_of_sales += sales_count * actual_current_price - old_amount_of_sales
+        trade_object.amount_of_sales += sales_count * sale_price - old_amount_of_sales
         old_average_actual_current_price = trade_object.average_actual_current_price
         delta_total_volume_of_sales = old_average_actual_current_price * trade_object.total_count_of_sales - old_sales_count * old_sale_price
         trade_object.total_count_of_sales += sales_count - old_sales_count
-        trade_object.average_actual_current_price = ( delta_total_volume_of_sales + actual_current_price * sales_count ) / trade_object.total_count_of_sales
+        trade_object.average_actual_current_price = ( delta_total_volume_of_sales + sale_price * sales_count ) / trade_object.total_count_of_sales
         trade_object.save
       else
         # Here was added actions when strategy was implementating
       end
-      trade_object.sales_histories.update(id, inputs.merge(sale_price: actual_current_price))
+      trade_object.sales_histories.update(id, inputs)
     end
   end
 end

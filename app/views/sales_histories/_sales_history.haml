@@ -2,7 +2,7 @@
   %td.to_right= number_to_currency(sales_history.sale_price, unit: '')
   %td.to_right= sales_history.sales_count
   %td.to_right= number_to_currency(sales_history.sale_price * sales_history.sales_count, unit: '')
-  %td.to_right= sales_history.created_at
+  %td.to_right= sales_history.created_at.strftime("%H:%M:%S (%d.%m.%Y)")
   %td.to_right
     %div.btn-group
       %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

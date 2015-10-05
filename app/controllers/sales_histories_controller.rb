@@ -1,7 +1,8 @@
 class SalesHistoriesController < ApplicationController
 
   def index
-    @sales_histories = SalesHistory.all
+    @trade_object = TradeObject.find(params[:trade_object_id])
+    @sales_histories = @trade_object.sales_histories
   end
 
   def new
@@ -15,7 +16,7 @@ class SalesHistoriesController < ApplicationController
   def create
     outcome = SalesHistories::Create.run(trade_object: trade_object,
                                          sales_count: params[:sales_history][:sales_count],
-                                         actual_current_price: params[:sales_history][:actual_current_price])
+                                         sale_price: params[:sales_history][:sale_price])
     if outcome.success?
       @sales_history = outcome.result
       if @sales_history.sale_price < trade_object.minimum_price
@@ -33,7 +34,7 @@ class SalesHistoriesController < ApplicationController
   def update
     outcome = SalesHistories::Update.run(trade_object: trade_object,
                                          sales_count: params[:sales_history][:sales_count],
-                                         actual_current_price: params[:sales_history][:actual_current_price],
+                                         sale_price: params[:sales_history][:sale_price],
                                          id: params[:id])
     if outcome.success?
       @sales_history = outcome.result

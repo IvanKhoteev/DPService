@@ -42,7 +42,9 @@ class TradeObjectsController < ApplicationController
 
   def destroy
     trade_object = TradeObject.find(params[:id])
+    name = trade_object.name
     trade_object.destroy
+    flash[:success] = "The Trade Subject '#{name}' was successfuly deleted"
     redirect_to root_path
   end
 

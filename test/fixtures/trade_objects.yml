@@ -12,8 +12,8 @@
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #  actual_current_price         :decimal(15, 2)
-#  average_actual_current_price :decimal(15, 2)
-#  among_of_sales               :decimal(15, 2)
+#  average_actual_current_price :decimal(15, 2)   default(0.0)
+#  amount_of_sales              :decimal(15, 2)   default(0.0)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

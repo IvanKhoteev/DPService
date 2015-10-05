@@ -1,4 +1,3 @@
-- @trade_object = TradeObject.find(params[:trade_object_id])
 .row
   .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.col-xs-12
     %h3.center
@@ -6,12 +5,21 @@
     %table.table.table-hover.table-bordered
       %thead
         %tr
-          %th Saling Price
+          %th Salling Price
           %th Number of Sales
           %th Sales Amount
           %th Date of Information
-          %th
+          %th Actions
       %tbody
-        = render @trade_object.sales_histories
+        = render @sales_histories
     .right
+      %div.btn-group.dropup
+        %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          Trade Object Actions
+          %span.caret
+        %ul.dropdown-menu.dropdown-menu-right
+          %li= link_to 'Show Object', trade_object_path(@trade_object)
+          %li= link_to 'Update Object', edit_trade_object_path(@trade_object)
+          %li= link_to 'Delete Object', trade_object_path(@trade_object), method: :delete, data: { confirm: 'Are you sure?' }
       = link_to 'Add Sales Data', new_trade_object_sales_history_path(@trade_object), class: 'btn btn-primary btn-center'
+    
